@@ -1,7 +1,6 @@
-import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Register } from "./components/Register";
-import Chat from "./components/Chat";
+import { Register } from "./components/auth/Register";
+import Chat from "./components/Chat/Chat";
 
 function App() {
   return (
