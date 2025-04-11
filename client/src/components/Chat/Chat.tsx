@@ -1,4 +1,12 @@
-import { Box, Stack, Paper, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Stack,
+  TextField,
+  Typography,
+  Avatar,
+  Divider,
+  Button,
+} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
 import UserList from "./UserList";
@@ -13,63 +21,110 @@ const Chat = () => {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
         backgroundColor: "#e3f2fd",
+        minHeight: "100vh",
+        boxSizing: "border-box",
+        overflow: "hidden",
         display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <Box sx={{ width: "40%" }}>
-        <UserList />
-      </Box>
       <Box
         sx={{
-          flex: 1,
+          width: "100%",
+          maxWidth: "1280px",
+          height: "720px",
           display: "flex",
-          flexDirection: "column",
-          height: "100vh",
+          boxShadow: 3,
+          backgroundColor: "#fff",
+          borderRadius: 2,
+          overflow: "hidden",
         }}
       >
         <Box
           sx={{
-            flex: 1,
-            overflowY: "auto",
-            p: 2,
+            width: "25%",
+            display: "flex",
+            flexDirection: "column",
+            borderRight: "1px solid #e0e0e0",
           }}
         >
-          <Messages messages={messages} currentUser={user} />
-        </Box>
-        <Paper
-          sx={{
-            padding: 2,
-            borderRadius: "20px",
-            backgroundColor: "#f0f0f0",
-            m: 2,
-          }}
-        >
-          <Stack direction="row" alignItems="center" spacing={2}>
-            <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-              Logged in as:
-            </Typography>
-            <Typography variant="body1">{user}</Typography>
-            <CloseIcon
+          <Box
+            sx={{
+              p: 2,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Avatar sx={{ bgcolor: "#cfd8dc", width: 40, height: 40 }}>
+                {user.charAt(0).toUpperCase()}
+              </Avatar>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "0.9rem",
+                }}
+              >
+                {user}
+              </Typography>
+            </Stack>
+            <Button
+              variant="text"
+              startIcon={<CloseIcon />}
               onClick={handleLogout}
-              sx={{ cursor: "pointer", color: "red" }}
-            />
-          </Stack>
-          <Stack direction="row" sx={{ mt: 2 }} spacing={2}>
-            <TextField
-              fullWidth
-              label="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              onKeyUp={(e) => {
-                if (e.key === "Enter") handleSendMessage();
-              }}
-            />
+              sx={{ textTransform: "none" }}
+            >
+              Logout
+            </Button>
+          </Box>
+          <Divider />
 
-            <SendIcon onClick={handleSendMessage} />
-          </Stack>
-        </Paper>
+          <UserList />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+          }}
+        >
+          <Box
+            sx={{
+              height: "80%",
+              overflowY: "auto",
+              p: 2,
+            }}
+          >
+            <Messages messages={messages} currentUser={user} />
+          </Box>
+          <Box
+            sx={{
+              px: 2,
+              pb: 2,
+            }}
+          >
+            <Stack
+              direction="row"
+              sx={{ mt: 2, alignItems: "center", color: "#1E2022" }}
+              spacing={2}
+            >
+              <TextField
+                fullWidth
+                label="Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyUp={(e) => {
+                  if (e.key === "Enter") handleSendMessage();
+                }}
+              />
+
+              <SendIcon onClick={handleSendMessage} />
+            </Stack>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

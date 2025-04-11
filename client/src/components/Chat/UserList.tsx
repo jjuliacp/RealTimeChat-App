@@ -1,16 +1,15 @@
-import { Paper, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useUsers } from "./hooks/useUsers";
 
 const UserList = () => {
   const { users } = useUsers();
 
   return (
-    <Paper
+    <Box
       sx={{
-        p: 4,
-        height: "100%",
-        backgroundColor: "#FFFFFF",
-        color: "#1E2022",
+        p: 2,
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Typography variant="h6" sx={{ mb: 1 }}>
@@ -27,7 +26,7 @@ const UserList = () => {
           ))
         )}
       </Box>
-    </Paper>
+    </Box>
   );
 };
 
