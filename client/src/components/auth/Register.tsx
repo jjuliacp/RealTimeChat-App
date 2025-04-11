@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CREATE_USER } from "../graphql/mutations";
+import { CREATE_USER } from "../../graphql/mutations";
 import {
   Box,
   Button,
