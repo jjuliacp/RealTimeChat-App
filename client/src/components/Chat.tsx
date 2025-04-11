@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { POST_MESSAGE } from "../graphql/mutations";
 import Messages from "./Messages";
 import { Box, Stack, Paper, TextField, Button } from "@mui/material";
 
 const Chat = () => {
-  const [user, setUser] = useState("Jack");
+  const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
   const [sendMessage] = useMutation(POST_MESSAGE);
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser.name);
+    }
+  }, []);
 
   const handleSendMessage = () => {
     if (message.trim() !== "") {
       sendMessage({ variables: { content: message, user } });
-      setMessage(""); // Limpiar el campo después de enviar
+      setMessage("");
     }
   };
 

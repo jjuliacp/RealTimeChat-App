@@ -10,3 +10,14 @@ export const POST_MESSAGE = gql`
     }
   }
 `;
+
+// Mutation para crear un nuevo usuario
+export const CREATE_USER = gql`
+  mutation CreateUser($name: String!, $isLoggedIn: Boolean!) {
+    createUser(name: $name, isLoggedIn: $isLoggedIn) {
+      id
+      name
+      isLoggedIn
+    }
+  }
+`;

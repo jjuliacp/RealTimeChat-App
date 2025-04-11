@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apollo/client";
-import Chat from "./components/Chat";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -9,6 +9,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <ApolloProvider client={client}>
-    <Chat />
+    <App />
   </ApolloProvider>
 );
