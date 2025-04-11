@@ -16,19 +16,44 @@ export const resolvers = {
       return message;
     },
     createUser: (_, { name, isLoggedIn }) => {
-      const user = {
-        id: Date.now().toString(),
-        name,
-        isLoggedIn,
-      };
-      console.log("Usuario creado:", user);
+      let user = users.find((u) => u.name === name);
+      if (user) {
+        user.isLoggedIn = true; // reconectado
+      } else {
+        user = {
+          id: Date.now().toString(),
+          name,
+          isLoggedIn,
+        };
+        users.push(user);
+      }
+      pubsub.publish("USER_CONNECTED", { userConnected: user });
+      console.log("Usuario conectado ✅:", user);
       return user;
+    },
+    logoutUser: (_, { name }) => {
+      const user = users.find((u) => u.name === name);
+      if (user) {
+        user.isLoggedIn = false;
+        pubsub.publish("USER_DISCONNECTED", { userDisconnected: user });
+        console.log("Usuario desconectado ❌:", user);
+        return true;
+      }
+      return false;
     },
   },
   Subscription: {
     messageSent: {
       subscribe: () => pubsub.asyncIterator("MESSAGE_SENT"),
       resolve: (payload) => payload.messageSent, // para poder enviar el mensaje completo
+    },
+    userConnected: {
+      subscribe: () => pubsub.asyncIterator("USER_CONNECTED"),
+      resolve: (payload) => payload.userConnected,
+    },
+    userDisconnected: {
+      subscribe: () => pubsub.asyncIterator("USER_DISCONNECTED"),
+      resolve: (payload) => payload.userDisconnected,
     },
   },
 };

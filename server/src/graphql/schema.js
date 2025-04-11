@@ -19,9 +19,12 @@ export const typeDefs = `
   type Mutation {
     sendMessage(content: String!, user: String!): Message
     createUser(name: String!, isLoggedIn: Boolean!): User!
+     logoutUser(name: String!): Boolean! 
   }
 
   type Subscription {
     messageSent: Message
+    userConnected: User
+    userDisconnected: User
   }
 `;

@@ -28,12 +28,4 @@ export const USER_DISCONNECTED = gql`
     }
   }
 `;
-// Subscription para obtener la lista de usuarios conectados
-export const FETCH_USERS = gql`
-  query {
-    users {
-      id
-      name
-    }
-  }
-`;
+

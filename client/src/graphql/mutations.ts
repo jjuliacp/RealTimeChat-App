@@ -21,3 +21,8 @@ export const CREATE_USER = gql`
     }
   }
 `;
+export const LOGOUT_USER = gql`
+  mutation LogoutUser($name: String!) {
+    logoutUser(name: $name)
+  }
+`;

@@ -9,3 +9,12 @@ export const FETCH_MESSAGES = gql`
     }
   }
 `;
+
+export const FETCH_USERS = gql`
+  query {
+    users {
+      id
+      name
+    }
+  }
+`;
