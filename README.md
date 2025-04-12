@@ -1,6 +1,6 @@
 # 🚀 Apollo Chat
 
-**Apollo Chat** es una aplicación de chat en tiempo real construida con **React**, **Apollo Client/Server**, **GraphQL**, y **WebSockets**. Permite a múltiples usuarios conectarse con un apodo y enviar mensajes instantáneamente a un canal general.
+**Apollo Chat** es una aplicación de chat en tiempo real construida con **React**, **Apollo Client/Server**, **GraphQL**, y **WebSockets**. Permite a  **múltiples** usuarios conectarse con un apodo y enviar mensajes instantáneamente a un canal general.
 
 ---
 
@@ -13,8 +13,10 @@
 
 ---
 
-## 🌐 Demo en vivo
-[![Watch the video](https://cdn.loom.com/sessions/thumbnails/ec9d8ed2687c43ea804e8c8ed745baf3-ba85271c393ce0cf-full-play.gif)](https://www.loom.com/share/ec9d8ed2687c43ea804e8c8ed745baf3)
+## 🌐  Demo: Chat en Tiempo Real
+✨ **Verás cómo dos usuarios interactúan instantáneamente en el chat general**. Si abres pestañas adicionales (o desde distintos dispositivos), ¡podrás simular más participantes!
+
+[![Loom Apollo Chat](https://cdn.loom.com/sessions/thumbnails/ec9d8ed2687c43ea804e8c8ed745baf3-ba85271c393ce0cf-full-play.gif)](https://www.loom.com/share/ec9d8ed2687c43ea804e8c8ed745baf3)
   
 ## 🚀 ¿Cómo ejecutar el proyecto?
 
