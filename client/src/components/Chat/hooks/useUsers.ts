@@ -1,13 +1,10 @@
-// src/components/Chat/hooks/useUsers.ts
 import { useQuery, useSubscription } from "@apollo/client";
-import { useState, useEffect } from "react";
-import { User } from "../../../types";
+import { useEffect } from "react";
 import { USER_CONNECTED, USER_DISCONNECTED } from "../../../graphql/subscriptions";
 import { FETCH_USERS } from "../../../graphql/queries";
 
 export const useUsers = () => {
-    const [users, setUsers] = useState<User[]>([]);
-    const { data: initialData, refetch } = useQuery(FETCH_USERS);
+    const { data, refetch } = useQuery(FETCH_USERS);
 
     useSubscription(USER_CONNECTED, {
         onData: () => refetch(),
@@ -17,11 +14,9 @@ export const useUsers = () => {
         onData: () => refetch(),
     });
 
-    useEffect(() => {
-        if (initialData?.users) {
-            setUsers(initialData.users);
-        }
-    }, [initialData]);
 
-    return { users };
+    useEffect(() => {
+        refetch();  //  👀 Forzar refetch para actualizr users
+    }, [refetch]);
+    return { users: data?.users || [] };
 };
