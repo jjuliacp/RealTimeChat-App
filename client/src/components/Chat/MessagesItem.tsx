@@ -14,8 +14,8 @@ export const MessageItem = ({ message, isCurrentUser }: MessageItemProps) => (
       borderRadius: isCurrentUser ? "18px 0 18px 18px" : "0 18px 18px 18px",
       maxWidth: "30%",
       marginLeft: isCurrentUser ? "auto" : "0",
-      backgroundColor: isCurrentUser ? "#007bff" : "#788189",
-      color: "white",
+      backgroundColor: isCurrentUser ? "#007bff" : "#cfd8dc",
+      color: isCurrentUser ? "white" : "cfd8dc",
     }}
   >
     {!isCurrentUser && (
@@ -27,7 +27,8 @@ export const MessageItem = ({ message, isCurrentUser }: MessageItemProps) => (
           color: "#1E2022",
         }}
       >
-        {message.user.toUpperCase()}
+        {message.user.charAt(0).toUpperCase() +
+          message.user.slice(1).toLowerCase()}
       </Typography>
     )}
     <Typography variant="body1">{message.content}</Typography>

@@ -34,20 +34,34 @@ const Chat = () => {
         sx={{
           width: "100%",
           maxWidth: "1280px",
-          height: "720px",
+          height: {
+            xs: "100vh",
+            md: "720px",
+          },
           display: "flex",
           boxShadow: 3,
           backgroundColor: "#fff",
           borderRadius: 2,
           overflow: "hidden",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
         }}
       >
         <Box
           sx={{
-            width: "25%",
+            width: {
+              xs: "100%",
+              md: "25%",
+            },
             display: "flex",
             flexDirection: "column",
             borderRight: "1px solid #e0e0e0",
+            borderBottom: {
+              xs: "1px solid #e0e0e0",
+              md: "none",
+            },
           }}
         >
           <Box
@@ -56,6 +70,10 @@ const Chat = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              position: "sticky",
+              top: 0,
+              zIndex: 10,
+              backgroundColor: "#fff",
             }}
           >
             <Stack direction="row" spacing={2} alignItems="center">
@@ -89,13 +107,16 @@ const Chat = () => {
             display: "flex",
             flexDirection: "column",
             flex: 1,
+            minHeight: 0,
           }}
         >
           <Box
             sx={{
-              height: "80%",
+              flex: 1,
+              minHeight: 0,
               overflowY: "auto",
               p: 2,
+              mt: 2,
             }}
           >
             <Messages messages={messages} currentUser={user} />

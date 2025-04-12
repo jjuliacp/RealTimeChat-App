@@ -15,7 +15,16 @@ const UserList = () => {
       <Typography variant="h6" sx={{ mb: 1 }}>
         Connected Users
       </Typography>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "row",
+            md: "column",
+          },
+          gap: 1,
+        }}
+      >
         {users.length === 0 ? (
           <Typography variant="body2">Waiting for users...</Typography>
         ) : (
