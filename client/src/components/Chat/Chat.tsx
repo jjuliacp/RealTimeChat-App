@@ -13,11 +13,21 @@ import UserList from "./UserList";
 import { useMessages } from "./hooks/useMessages";
 import { useChat } from "./hooks/UseChat";
 import Messages from "./Messages";
+import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
   const { messages } = useMessages();
   const { user, message, setMessage, handleSendMessage, handleLogout } =
     useChat();
+  const navigate = useNavigate();
+
+  const handleLogoutAndRedirect = async () => {
+    const success = await handleLogout();
+    if (success) {
+      navigate("/", { state: { fromLogout: true } }); // Envía estado
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -92,7 +102,7 @@ const Chat = () => {
             <Button
               variant="text"
               startIcon={<CloseIcon />}
-              onClick={handleLogout}
+              onClick={handleLogoutAndRedirect}
               sx={{ textTransform: "none" }}
             >
               Logout

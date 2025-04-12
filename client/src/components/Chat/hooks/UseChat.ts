@@ -9,12 +9,15 @@ export const useChat = () => {
     const [sendMessage] = useMutation(POST_MESSAGE);
     const [logoutUser] = useMutation(LOGOUT_USER);
     const navigate = useNavigate();
+    const [logoutSuccess, setLogoutSuccess] = useState(false);
 
     const handleLogout = async () => {
         try {
             await logoutUser({ variables: { name: user } });
             localStorage.removeItem("user");
+            setLogoutSuccess(true);
             navigate("/");
+            return true
         } catch (err) {
             console.error("Error al cerrar sesión:", err);
         }
@@ -41,5 +44,7 @@ export const useChat = () => {
         setMessage,
         handleSendMessage,
         handleLogout,
+        logoutSuccess,
+        setLogoutSuccess
     };
 };
