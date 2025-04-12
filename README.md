@@ -14,7 +14,8 @@
 ---
 
 ## 🌐 Demo en vivo
-
+[![Watch the video](https://cdn.loom.com/sessions/thumbnails/ec9d8ed2687c43ea804e8c8ed745baf3-ba85271c393ce0cf-full-play.gif)](https://www.loom.com/share/ec9d8ed2687c43ea804e8c8ed745baf3)
+  
 ## 🚀 ¿Cómo ejecutar el proyecto?
 
 ### 1. Clonar el repositorio
