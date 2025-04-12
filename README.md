@@ -15,8 +15,6 @@
 
 ## 🌐 Demo en vivo
 
-## 📐 Estructura del proyecto
-
 ## 🚀 ¿Cómo ejecutar el proyecto?
 
 ### 1. Clonar el repositorio
@@ -45,3 +43,61 @@ yarn dev
 ```
 
 El cliente corre en http://localhost:5173 por defecto.
+
+## 🚧 Mejoras Potenciales (TODO)
+
+- Agregar **chat 1 a 1** entre usuarios.
+- Implementar **una base de datos** para guardar historial.
+- Autenticación con **JWT**
+- Mejorar diseño para móviles.
+- Toggle para **mostrar/ocultar** historial completo
+
+## 📐 Estructura del proyecto
+
+```bash
+.
+├── README.md
+├── client/
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── public/
+│   │   └── vite.svg
+│   ├── src/
+│   │   ├── App.tsx
+│   │   ├── apollo/
+│   │   │   └── client.ts
+│   │   ├── assets/
+│   │   │   └── react.svg
+│   │   ├── components/
+│   │   │   ├── Chat/
+│   │   │   │   ├── Chat.tsx
+│   │   │   │   ├── Messages.tsx
+│   │   │   │   ├── MessagesItem.tsx
+│   │   │   │   ├── UserList.tsx
+│   │   │   │   └── hooks/
+│   │   │   │       ├── UseChat.ts
+│   │   │   │       ├── useMessages.ts
+│   │   │   │       └── useUsers.ts
+│   │   │   └── auth/
+│   │   │       └── Register.tsx
+│   │   ├── graphql/
+│   │   │   ├── mutations.ts
+│   │   │   ├── queries.ts
+│   │   │   └── subscriptions.ts
+│   │   ├── main.tsx
+│   │   ├── types/
+│   │   │   └── index.ts
+│   │   └── vite-env.d.ts
+│   └── yarn.lock
+└── server/
+    ├── package.json
+    ├── pubsub.js
+    ├── server.js
+    ├── src/
+    │   └── graphql/
+    │       ├── resolvers.js
+    │       └── schema.js
+    └── yarn.lock
+```
